@@ -18,7 +18,6 @@
     top: -5%;
     left: -5%;
     z-index: 10;
-    //animation: linear up_down 10s infinite;
   }
 }
 
@@ -35,13 +34,21 @@
   background-image: linear-gradient(to top, #016492, #bdf9ff);
   width: 750px;
   height: 750px;
+  min-width: 750px;
+  min-height: 750px;
   border-radius: 50%;
   overflow: hidden;
-  //border: 1px solid #000000;
+  box-shadow: 0 0 30px rgba(30,30,30, .5);
   max-width: 100%;
   transition: all 1s;
-
   animation: ease-in-out start_hide 2s forwards;
+
+  @media screen and (max-width: 760px) {
+    width: 320px;
+    height: 320px;
+    min-width: 320px;
+    min-height: 320px;
+  }
 
   .window__shadow {
     content: '';
@@ -70,6 +77,13 @@
     transition: all 1s;
     transform-style: preserve-3d;
     transform: perspective(1200px);
+
+    @media screen and (max-width: 760px) {
+      width: 360px;
+      height: 360px;
+      min-width: 360px;
+      min-height: 360px;
+    }
   }
 }
 

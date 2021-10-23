@@ -81,10 +81,23 @@ window.addEventListener('load', () => {
     let mountain_far = document.querySelector('.mountain_far');
     let mountain = document.querySelector('.mountain');
     let forest = document.querySelector('.forest');
+    let bg = document.querySelector('#bg');
 
     startSun();
 
     function startSun() {
+
+        bg.animate([
+            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '0'},
+            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
+        ], {
+            delay: 500,
+            duration: 500,
+            fill: 'forwards',
+            easing: 'ease-in-out',
+        });
+
         ellipse_sun.forEach((item, index) => {
             setTimeout(() => {
                 let res;
@@ -249,6 +262,17 @@ window.addEventListener('load', () => {
     }
 
     function startMoon() {
+        bg.animate([
+            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '0'},
+            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
+        ], {
+            delay: 500,
+            duration: 500,
+            fill: 'forwards',
+            easing: 'ease-in-out',
+        });
+
         ellipse_moon.forEach((item, index) => {
             setTimeout(() => {
                 let res;
@@ -278,7 +302,7 @@ window.addEventListener('load', () => {
         }, 2000);
 
         setTimeout(() => {
-            mountain_far.animate([{bottom: 0}], {
+            mountain_far.animate([{bottom: 0, filter: 'brightness(.5)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
@@ -286,7 +310,7 @@ window.addEventListener('load', () => {
         }, 2400);
 
         setTimeout(() => {
-            sea.animate([{bottom: 0}], {
+            sea.animate([{bottom: 0, filter: 'brightness(.5)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
@@ -294,7 +318,7 @@ window.addEventListener('load', () => {
         }, 2800);
 
         setTimeout(() => {
-            mountain.animate([{right: 0}], {
+            mountain.animate([{right: 0, filter: 'brightness(.5)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
@@ -307,7 +331,7 @@ window.addEventListener('load', () => {
                 fill: 'forwards',
                 easing: 'ease-in-out',
             });
-            setTimeout(() => finishMoon(), 7000)
+            setTimeout(() => finishMoon(), 7000);
         }, 3700);
     }
 
@@ -331,7 +355,7 @@ window.addEventListener('load', () => {
                         });
                     }, 600);
                 });
-            }, index * 450);
+            }, index * 350);
         });
 
         setTimeout(() => {
@@ -344,7 +368,7 @@ window.addEventListener('load', () => {
 
 
         setTimeout(() => {
-            sea.animate([{bottom: '-100%'}], {
+            sea.animate([{bottom: '-100%', filter: 'brightness(1)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
@@ -352,7 +376,7 @@ window.addEventListener('load', () => {
         }, 1900);
 
         setTimeout(() => {
-            mountain_far.animate([{bottom: '-100%'}], {
+            mountain_far.animate([{bottom: '-100%', filter: 'brightness(1)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
@@ -360,7 +384,7 @@ window.addEventListener('load', () => {
         }, 1600);
 
         setTimeout(() => {
-            mountain.animate([{right: '-100%'}], {
+            mountain.animate([{right: '-100%', filter: 'brightness(1)'}], {
                 duration: 1000,
                 fill: 'forwards',
                 easing: 'ease-in-out',
