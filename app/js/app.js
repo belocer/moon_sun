@@ -55,7 +55,7 @@ class Box3D {
 
     elementDirectionalShift(x, y, signX = '', signY = '') {
         this.card.style.transform = `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) translateZ(0)`;
-        this.window__shadow.style.boxShadow = `inset ${signX}${this.depth_shadow_first_level}px ${signY}${this.depth_shadow_first_level}px 40px rgba(0,0,0, 0.8), inset ${signX}${this.depth_shadow_second_level}px ${signY}${this.depth_shadow_second_level}px 50px rgba(0,0,0, 0.8)`;
+        this.window__shadow.style.boxShadow = `inset ${signX}${this.depth_shadow_first_level}px ${signY}${this.depth_shadow_first_level}px 40px rgba(0,0,0, 0.7), inset ${signX}${this.depth_shadow_second_level}px ${signY}${this.depth_shadow_second_level}px 50px rgba(0,0,0, 0.7)`;
     }
 }
 
@@ -70,4 +70,310 @@ window.addEventListener('load', () => {
         depth_shadow_second_level: 20, // угол отклонения в градусах
     };
     new Box3D(obg_card);
-})
+
+    let ellipse_moon = document.querySelectorAll('.ellipse_moon');
+    let ellipse_sun = document.querySelectorAll('.ellipse_sun');
+    let moon_stars = document.querySelector('.moon_stars');
+    let sun1 = document.querySelector('.sun1');
+    let clouds = document.querySelector('.clouds');
+    let birds = document.querySelector('.birds');
+    let sea = document.querySelector('.sea');
+    let mountain_far = document.querySelector('.mountain_far');
+    let mountain = document.querySelector('.mountain');
+    let forest = document.querySelector('.forest');
+
+    startSun();
+
+    function startSun() {
+        ellipse_sun.forEach((item, index) => {
+            setTimeout(() => {
+                let res;
+                res = item.animate([{left: 0}], {
+                    delay: 500,
+                    duration: 500,
+                    fill: 'forwards',
+                    easing: 'ease-in-out',
+                });
+                res.addEventListener('finish', () => {
+                    setTimeout(() => {
+                        item.animate([{transform: 'translateZ(0)'}], {
+                            duration: 500,
+                            fill: 'forwards',
+                        });
+                    }, 600);
+                });
+            }, index * 250);
+        });
+
+        setTimeout(() => {
+            sun1.animate([{opacity: 1, top: 0}], {
+                delay: 500,
+                duration: 500,
+                fill: 'forwards',
+            });
+        }, 1500);
+
+        setTimeout(() => {
+            clouds.animate([{top: 0}], {
+                duration: 1500,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 2200);
+
+        setTimeout(() => {
+            birds.animate([{left: 0}], {
+                duration: 1500,
+                fill: 'forwards',
+            });
+        }, 2600);
+
+        setTimeout(() => {
+            mountain_far.animate([{bottom: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 3000);
+
+        setTimeout(() => {
+            sea.animate([{bottom: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 3400);
+
+        setTimeout(() => {
+            mountain.animate([{right: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 3800);
+
+        setTimeout(() => {
+            forest.animate([{left: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+            setTimeout(() => finishSun(), 7000)
+        }, 4200);
+    }
+
+    function finishSun() {
+        setTimeout(() => {
+            forest.animate([{left: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 3700);
+
+        ellipse_sun.forEach((item, index) => {
+            setTimeout(() => {
+                let res = item.animate([{transform: 'translateZ(-100px)'}], {
+                    duration: 500,
+                    fill: 'forwards',
+                    composite: 'add',
+                });
+
+                res.addEventListener('finish', () => {
+                    setTimeout(() => {
+                        item.animate([{left: '-100%'}], {
+                            delay: 500,
+                            duration: 500,
+                            fill: 'forwards',
+                            easing: 'ease-in-out',
+                            composite: 'add',
+                        });
+                    }, 600);
+                });
+            }, index * 250);
+        });
+
+        setTimeout(() => {
+            sun1.animate([{opacity: 0, top: '-100%'}], {
+                duration: 500,
+                fill: 'forwards',
+            });
+        }, 3000);
+
+        setTimeout(() => {
+            clouds.animate([{top: '-100%'}], {
+                duration: 1500,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 2500);
+
+        setTimeout(() => {
+            birds.animate([{left: '-100%'}], {
+                duration: 1750,
+                fill: 'forwards',
+            });
+        }, 2200);
+
+        setTimeout(() => {
+            sea.animate([{bottom: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1900);
+
+        setTimeout(() => {
+            mountain_far.animate([{bottom: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1600);
+
+        setTimeout(() => {
+            mountain.animate([{right: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1300);
+        setTimeout(() => {
+            let resAnim = forest.animate([{left: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+            setTimeout(() => startMoon(), 3000)
+        }, 1000);
+    }
+
+    function startMoon() {
+        ellipse_moon.forEach((item, index) => {
+            setTimeout(() => {
+                let res;
+                res = item.animate([{right: 0}], {
+                    delay: 500,
+                    duration: 500,
+                    fill: 'forwards',
+                    easing: 'ease-in-out',
+                });
+                res.addEventListener('finish', () => {
+                    setTimeout(() => {
+                        item.animate([{transform: 'translateZ(0)'}], {
+                            duration: 500,
+                            fill: 'forwards',
+                        });
+                    }, 600);
+                });
+            }, index * 250);
+        });
+
+        setTimeout(() => {
+            moon_stars.animate([{opacity: 1, top: 0}], {
+                delay: 500,
+                duration: 500,
+                fill: 'forwards',
+            });
+        }, 2000);
+
+        setTimeout(() => {
+            mountain_far.animate([{bottom: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 2400);
+
+        setTimeout(() => {
+            sea.animate([{bottom: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 2800);
+
+        setTimeout(() => {
+            mountain.animate([{right: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 3200);
+
+        setTimeout(() => {
+            forest.animate([{left: 0}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+            setTimeout(() => finishMoon(), 7000)
+        }, 3700);
+    }
+
+    function finishMoon() {
+        ellipse_moon.forEach((item, index) => {
+            setTimeout(() => {
+                let res = item.animate([{transform: 'translateZ(-100px)'}], {
+                    duration: 500,
+                    fill: 'forwards',
+                    composite: 'add',
+                });
+
+                res.addEventListener('finish', () => {
+                    setTimeout(() => {
+                        item.animate([{right: '-100%'}], {
+                            delay: 500,
+                            duration: 500,
+                            fill: 'forwards',
+                            easing: 'ease-in-out',
+                            composite: 'add',
+                        });
+                    }, 600);
+                });
+            }, index * 450);
+        });
+
+        setTimeout(() => {
+            moon_stars.animate([{opacity: 0, top: '-100%'}], {
+                delay: 500,
+                duration: 500,
+                fill: 'forwards',
+            });
+        }, 1700);
+
+
+        setTimeout(() => {
+            sea.animate([{bottom: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1900);
+
+        setTimeout(() => {
+            mountain_far.animate([{bottom: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1600);
+
+        setTimeout(() => {
+            mountain.animate([{right: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+        }, 1300);
+
+        setTimeout(() => {
+            forest.animate([{left: '-100%'}], {
+                duration: 1000,
+                fill: 'forwards',
+                easing: 'ease-in-out',
+            });
+            setTimeout(() => startSun(), 3000)
+        }, 1000);
+    }
+});
