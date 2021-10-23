@@ -1,0 +1,131 @@
+.moon-sun__container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+  transition: all 1s;
+
+  &::before {
+    content: '';
+    display: block;
+   background: url("../img/dest/pattern.webp");
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    z-index: 10;
+    //animation: linear up_down 10s infinite;
+  }
+}
+
+@keyframes up_down {
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+
+.moon-sun__window {
+  position: relative;
+  z-index: 20;
+  background-image: linear-gradient(to top, #016492, #bdf9ff);
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  overflow: hidden;
+  //border: 1px solid #000000;
+  max-width: 100%;
+  transition: all 1s;
+
+  &::after {
+    content: '';
+    display: block;
+    box-shadow: 0 0 20px rgba(0,0,0, 1), inset 0 0 30px rgba(0,0,0, 1), inset 0 0 40px rgba(0,0,0, 1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .shift_wrap {
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    z-index: 10;
+    width: 790px;
+    height: 790px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 1s;
+  }
+}
+
+.forest,
+.mountain,
+.mountain_far,
+.sea,
+.moon__wrap,
+.sun__wrap
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.forest {
+  background: url("../img/dest/Trees.webp");
+  background-size: cover;
+  z-index: 100;
+}
+
+.mountain {
+  background: url("../img/dest/mountain.webp");
+  background-size: cover;
+  z-index: 90;
+}
+
+.sea {
+  background: url("../img/dest/sea.webp");
+  background-size: cover;
+  z-index: 80;
+  opacity: .95;
+}
+
+.mountain_far {
+  background: url("../img/dest/MountainFar.webp");
+  background-size: cover;
+  z-index: 70;
+  filter: brightness(.7);
+}
+
+.sun__wrap {
+  background: url("../img/dest/elipse_sun_cloud_birds.webp");
+  background-size: cover;
+  z-index: 59;
+  animation: linear rotate_bg 200s infinite;
+}
+
+.moon__wrap {
+  background: url("../img/dest/elipse_moon_stars.webp");
+  background-size: cover;
+  z-index: 60;
+  animation: linear rotate_bg 200s infinite;
+}
+
+@keyframes rotate_bg {
+  100% {
+    transform: rotate(360deg);
+  }
+}
