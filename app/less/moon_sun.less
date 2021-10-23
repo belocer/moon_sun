@@ -11,7 +11,7 @@
   &::before {
     content: '';
     display: block;
-   background: url("../img/dest/pattern.webp");
+    background: url("../img/dest/pattern.webp");
     width: 110%;
     height: 110%;
     position: absolute;
@@ -41,10 +41,12 @@
   max-width: 100%;
   transition: all 1s;
 
-  &::after {
+  animation: ease-in-out start_hide 2s forwards;
+
+  .window__shadow {
     content: '';
     display: block;
-    box-shadow: 0 0 20px rgba(0,0,0, 1), inset 0 0 30px rgba(0,0,0, 1), inset 0 0 40px rgba(0,0,0, 1);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, .8), inset 0 0 40px rgba(0, 0, 0, .8);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -53,6 +55,7 @@
     z-index: 150;
     border-radius: 50%;
     overflow: hidden;
+    transition: all 1s;
   }
 
   .shift_wrap {
@@ -68,13 +71,16 @@
   }
 }
 
+@keyframes start_hide {
+
+}
+
 .forest,
 .mountain,
 .mountain_far,
 .sea,
 .moon__wrap,
-.sun__wrap
-{
+.sun__wrap {
   position: absolute;
   top: 0;
   right: 0;
@@ -113,8 +119,9 @@
 .sun__wrap {
   background: url("../img/dest/elipse_sun_cloud_birds.webp");
   background-size: cover;
-  z-index: 59;
+  z-index: 60;
   animation: linear rotate_bg 200s infinite;
+  opacity: 0;
 }
 
 .moon__wrap {
@@ -122,6 +129,7 @@
   background-size: cover;
   z-index: 60;
   animation: linear rotate_bg 200s infinite;
+  opacity: 1;
 }
 
 @keyframes rotate_bg {
