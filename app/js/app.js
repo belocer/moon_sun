@@ -88,9 +88,9 @@ window.addEventListener('load', () => {
     function startSun() {
 
         bg.animate([
-            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
-            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '0'},
-            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(./img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(./img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '0'},
+            {background: 'url(./img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
         ], {
             delay: 500,
             duration: 500,
@@ -263,9 +263,9 @@ window.addEventListener('load', () => {
 
     function startMoon() {
         bg.animate([
-            {background: 'url(../img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
-            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '0'},
-            {background: 'url(../img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(./img/dest/main_bg2.webp)', backgroundSize: 'cover', opacity: '1'},
+            {background: 'url(./img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '0'},
+            {background: 'url(./img/dest/main_bg1.webp)', backgroundSize: 'cover', opacity: '1'},
         ], {
             delay: 500,
             duration: 500,
@@ -299,7 +299,7 @@ window.addEventListener('load', () => {
                 duration: 500,
                 fill: 'forwards',
             });
-        }, 2000);
+        }, 2300);
 
         setTimeout(() => {
             mountain_far.animate([{bottom: 0, filter: 'brightness(.5)'}], {
@@ -307,7 +307,7 @@ window.addEventListener('load', () => {
                 fill: 'forwards',
                 easing: 'ease-in-out',
             });
-        }, 2400);
+        }, 2700);
 
         setTimeout(() => {
             sea.animate([{bottom: 0, filter: 'brightness(.5)'}], {
@@ -315,7 +315,7 @@ window.addEventListener('load', () => {
                 fill: 'forwards',
                 easing: 'ease-in-out',
             });
-        }, 2800);
+        }, 3000);
 
         setTimeout(() => {
             mountain.animate([{right: 0, filter: 'brightness(.5)'}], {
@@ -323,7 +323,7 @@ window.addEventListener('load', () => {
                 fill: 'forwards',
                 easing: 'ease-in-out',
             });
-        }, 3200);
+        }, 3300);
 
         setTimeout(() => {
             forest.animate([{left: 0}], {
